@@ -38,7 +38,9 @@ function onInputForm(e) {
 
   dataObject[name] = value;
 
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObject));
+  if (dataObject.email && dataObject.message !== undefined) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObject));
+  }
 }
 
 function populatedFormData() {
