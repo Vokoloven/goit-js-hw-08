@@ -19,12 +19,16 @@ function onSubmitForm(e) {
   const userData = e.currentTarget.elements;
   const { email, message } = userData;
 
-  console.log(`${email.name}: ${email.value}`);
-  console.log(`${message.name}: ${message.value}`);
+  if (!email.value || !message.value) {
+    alert('Pls fill all fields: email & message');
+  } else {
+    console.log(`${email.name}: ${email.value}`);
+    console.log(`${message.name}: ${message.value}`);
 
-  e.currentTarget.reset();
+    e.currentTarget.reset();
 
-  localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);
+  }
 }
 
 populatedFormData();
@@ -38,9 +42,13 @@ function onInputForm(e) {
 
   dataObject[name] = value;
 
-  if (dataObject.email && dataObject.message !== undefined) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObject));
+  if (dataObject.message === undefined) {
+    dataObject.message = '';
+  } else if (dataObject.email === undefined) {
+    dataObject.email = '';
   }
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObject));
 }
 
 function populatedFormData() {
