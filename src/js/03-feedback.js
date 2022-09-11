@@ -19,7 +19,7 @@ function onSubmitForm(e) {
   const userData = e.currentTarget.elements;
   const { email, message } = userData;
 
-  if (!email.value || !message.value) {
+  if (email.value === '' || message.value === '') {
     alert('Pls fill all fields: email & message');
   } else {
     console.log(`${email.name}: ${email.value}`);
