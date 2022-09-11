@@ -36,9 +36,6 @@ populatedFormData();
 const dataObject = {};
 
 function onInputForm() {
-  // const userData = e.target;
-  // const { name, value } = userData;
-  // dataObject[name] = value;
   dataObject.email = form[0].value;
   dataObject.message = form[1].value;
 
