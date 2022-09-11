@@ -42,11 +42,8 @@ function onInputForm(e) {
 
   dataObject[name] = value;
 
-  if (dataObject.message === undefined) {
-    dataObject.message = '';
-  } else if (dataObject.email === undefined) {
-    dataObject.email = '';
-  }
+  dataObject.email = form[0].value;
+  dataObject.message = form[1].value;
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObject));
 }
@@ -60,3 +57,5 @@ function populatedFormData() {
     input.value = parsedFormData.email;
   }
 }
+
+console.log(form[0].value);
