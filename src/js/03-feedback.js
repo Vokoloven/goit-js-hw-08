@@ -54,5 +54,3 @@ function populatedFormData() {
     input.value = parsedFormData.email;
   }
 }
-
-console.log(form[0].value);
