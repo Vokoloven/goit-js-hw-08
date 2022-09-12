@@ -1,4 +1,5 @@
 import throttle from 'lodash.throttle';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
   form: document.querySelector('.feedback-form'),
@@ -20,7 +21,7 @@ function onSubmitForm(e) {
   const { email, message } = userData;
 
   if (email.value === '' || message.value === '') {
-    alert('Pls fill all fields: email & message');
+    Notify.failure('Pls fill all fields: email & message');
   } else {
     console.log(`${email.name}: ${email.value}`);
     console.log(`${message.name}: ${message.value}`);
@@ -36,8 +37,8 @@ populatedFormData();
 const dataObject = {};
 
 function onInputForm() {
-  dataObject.email = form[0].value;
-  dataObject.message = form[1].value;
+  dataObject.email = form[0].value.trim();
+  dataObject.message = form[1].value.trim();
 
   localStorage.setItem(STORAGE_KEY, JSON.stringify(dataObject));
 }
